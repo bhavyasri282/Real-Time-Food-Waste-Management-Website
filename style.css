@@ -1,40 +1,41 @@
+/* General */
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
   background-color: #f7f7f7;
+  color: #333;
 }
 
-h1, h2 {
+a { text-decoration: none; }
+
+header .hero {
+  background: linear-gradient(to right, #28a745, #81c784);
+  color: white;
   text-align: center;
+  padding: 100px 20px;
 }
 
-.form-container, .donations-container {
-  background-color: white;
-  padding: 20px;
-  margin: 20px auto;
-  width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.hero h1 { font-size: 3em; margin-bottom: 20px; }
+.hero p { font-size: 1.2em; margin-bottom: 30px; }
+.hero-buttons a {
+  padding: 12px 25px;
+  margin: 5px;
+  border-radius: 50px;
+  font-weight: bold;
+  display: inline-block;
+}
+.btn { background-color: #ffc107; color: #333; }
+.btn-secondary { background-color: #fff; color: #28a745; border: 2px solid #28a745; }
+.btn:hover { opacity: 0.9; }
+
+.about {
+  text-align: center;
+  padding: 50px 20px;
 }
 
-input, button {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-}
-
-button {
+footer {
   background-color: #28a745;
   color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
+  text-align: center;
+  padding: 20px;
 }

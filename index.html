@@ -4,32 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Waste Management</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Food Waste Management System</h1>
+  <header>
+    <div class="hero">
+      <h1>Real-Time Food Waste Management</h1>
+      <p>Reduce Food Wastage. Help the Hungry. Save the Planet.</p>
+      <div class="hero-buttons">
+        <a href="donor.html" class="btn">Donate Food</a>
+        <a href="ngo.html" class="btn btn-secondary">View Donations</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="form-container">
-    <h2>Donate Food</h2>
-    <form id="foodForm">
-      <input type="text" id="donorName" placeholder="Donor Name" required><br>
-      <input type="text" id="foodType" placeholder="Food Type" required><br>
-      <input type="number" id="quantity" placeholder="Quantity" required><br>
-      <input type="text" id="latitude" placeholder="Latitude" required><br>
-      <input type="text" id="longitude" placeholder="Longitude" required><br>
-      <input type="date" id="expiryDate" placeholder="Expiry Date" required><br>
-      <button type="submit">Donate</button>
-    </form>
-  </div>
+  <section class="about">
+    <h2>About This Project</h2>
+    <p>
+      Food wastage is a major global issue causing economic loss and environmental harm.
+      This platform connects food donors such as restaurants, hotels, and households with NGOs
+      for timely redistribution of surplus food.
+    </p>
+  </section>
 
-  <div class="donations-container">
-    <h2>Available Food Donations</h2>
-    <ul id="donationList"></ul>
-  </div>
-
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2026 Real-Time Food Waste Management. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
