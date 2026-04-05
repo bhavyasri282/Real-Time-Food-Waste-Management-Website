@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Waste Management</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <h1>Food Waste Management System</h1>
+
+  <div class="form-container">
+    <h2>Donate Food</h2>
+    <form id="foodForm">
+      <input type="text" id="donorName" placeholder="Donor Name" required><br>
+      <input type="text" id="foodType" placeholder="Food Type" required><br>
+      <input type="number" id="quantity" placeholder="Quantity" required><br>
+      <input type="text" id="latitude" placeholder="Latitude" required><br>
+      <input type="text" id="longitude" placeholder="Longitude" required><br>
+      <input type="date" id="expiryDate" placeholder="Expiry Date" required><br>
+      <button type="submit">Donate</button>
+    </form>
+  </div>
+
+  <div class="donations-container">
+    <h2>Available Food Donations</h2>
+    <ul id="donationList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
