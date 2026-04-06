@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Waste Management</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Waste Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <h1>Real-Time Food Waste Management</h1>
-      <p>Reduce Food Wastage. Help the Hungry. Save the Planet.</p>
-      <div class="hero-buttons">
-        <a href="donor.html" class="btn">Donate Food</a>
-        <a href="ngo.html" class="btn btn-secondary">View Donations</a>
-      </div>
-    </div>
-  </header>
+    <header>
+        <h1>Food Waste Management System</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="donor.html">Donor</a>
+            <a href="ngo.html">NGO</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="about">
-    <h2>About This Project</h2>
-    <p>
-      Food wastage is a major global issue causing economic loss and environmental harm.
-      This platform connects food donors such as restaurants, hotels, and households with NGOs
-      for timely redistribution of surplus food.
-    </p>
-  </section>
+    <main>
+        <section class="hero">
+            <h2>Stop Food Waste, Help Someone</h2>
+            <p>Donate or request food from local NGOs.</p>
+        </section>
 
-  <footer>
-    <p>&copy; 2026 Real-Time Food Waste Management. All Rights Reserved.</p>
-  </footer>
+        <section class="features">
+            <div class="feature">
+                <h3>Donate Food</h3>
+                <p>Share surplus food with those in need.</p>
+            </div>
+            <div class="feature">
+                <h3>Request Food</h3>
+                <p>NGOs can request food donations.</p>
+            </div>
+            <div class="feature">
+                <h3>Track Donations</h3>
+                <p>See your donation history and impact.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Food Waste Management</p>
+    </footer>
 </body>
 </html>

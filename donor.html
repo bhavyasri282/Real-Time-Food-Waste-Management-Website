@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate Food</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/donor.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Donate Your Surplus Food</h1>
-  </header>
+    <header>
+        <h1>Donor Page</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="donor.html">Donor</a>
+            <a href="ngo.html">NGO</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="form-section">
-    <form id="foodForm">
-      <input type="text" id="donorName" placeholder="Your Name" required>
-      <input type="text" id="foodType" placeholder="Food Type" required>
-      <input type="number" id="quantity" placeholder="Quantity" required>
-      <input type="text" id="location" placeholder="Location" required>
-      <input type="date" id="expiryDate" required>
-      <button type="submit" class="btn">Submit Donation</button>
-    </form>
-    <p id="confirmation" style="text-align:center; color:green;"></p>
-  </section>
+    <main>
+        <section class="donate-form">
+            <h2>Donate Food</h2>
+            <form id="donorForm">
+                <input type="text" id="donorName" placeholder="Your Name" required>
+                <input type="text" id="foodItem" placeholder="Food Item" required>
+                <input type="number" id="quantity" placeholder="Quantity" required>
+                <button type="submit">Donate</button>
+            </form>
+            <p id="donorStatus"></p>
+        </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2026 Real-Time Food Waste Management</p>
-  </footer>
+    <footer>
+        <p>&copy; 2026 Food Waste Management</p>
+    </footer>
 </body>
 </html>

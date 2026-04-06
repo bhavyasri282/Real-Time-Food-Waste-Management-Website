@@ -1,32 +1,43 @@
-// Sample demo donations (replace with real-time database later)
-const donations = [
-  { donorName: "Alice", foodType: "Bread", quantity: 20, location: "City Center", expiry: "2026-04-10" },
-  { donorName: "Bob", foodType: "Rice", quantity: 10, location: "Downtown", expiry: "2026-04-08" }
-];
+// Firebase config (same as script.js)
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_ID",
+    appId: "YOUR_APP_ID"
+};
 
-const donationList = document.getElementById("donationList");
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-function displayDonations() {
-  donationList.innerHTML = "";
-  donations.forEach((d, index) => {
-    const card = document.createElement("div");
-    card.classList.add("donation-card");
-    card.innerHTML = `
-      <h3>${d.foodType} (${d.quantity})</h3>
-      <p>Donor: ${d.donorName}</p>
-      <p>Location: ${d.location}</p>
-      <p>Expiry: ${d.expiry}</p>
-      <button onclick="acceptDonation(${index})" class="btn btn-secondary">Accept Donation</button>
-    `;
-    donationList.appendChild(card);
-  });
+// NGO request form
+const ngoForm = document.getElementById("ngoForm");
+if(ngoForm){
+    ngoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const ngoName = document.getElementById("ngoName").value;
+        const foodRequest = document.getElementById("foodRequest").value;
+        const quantityRequest = document.getElementById("quantityRequest").value;
+
+        db.collection("ngoRequests").add({ ngoName, foodRequest, quantityRequest })
+        .then(() => {
+            document.getElementById("ngoStatus").innerText = "Request submitted!";
+            ngoForm.reset();
+        })
+        .catch(err => {
+            document.getElementById("ngoStatus").innerText = "Error! " + err;
+        });
+    });
 }
 
-function acceptDonation(index) {
-  alert(`Donation of ${donations[index].foodType} accepted!`);
-  donations.splice(index, 1); // remove donation after accepting
-  displayDonations();
-}
-
-// Initial display
-displayDonations();
+// Display all requests
+const requestsList = document.getElementById("requestsList");
+db.collection("ngoRequests").onSnapshot(snapshot => {
+    requestsList.innerHTML = "";
+    snapshot.forEach(doc => {
+        const li = document.createElement("li");
+        li.innerText = `${doc.data().ngoName} needs ${doc.data().quantityRequest} of ${doc.data().foodRequest}`;
+        requestsList.appendChild(li);
+    });
+});

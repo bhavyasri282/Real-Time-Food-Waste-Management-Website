@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NGO Dashboard</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/ngo.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="ngo.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>NGO Dashboard</h1>
-    <p>View donations and accept food for distribution</p>
-  </header>
+    <header>
+        <h1>NGO Page</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="donor.html">Donor</a>
+            <a href="ngo.html">NGO</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="ngo-section">
-    <div id="donationList" class="donation-cards">
-      <!-- Donation cards will appear here -->
-    </div>
-  </section>
+    <main>
+        <section class="request-form">
+            <h2>Request Food</h2>
+            <form id="ngoForm">
+                <input type="text" id="ngoName" placeholder="NGO Name" required>
+                <input type="text" id="foodRequest" placeholder="Food Required" required>
+                <input type="number" id="quantityRequest" placeholder="Quantity" required>
+                <button type="submit">Request</button>
+            </form>
+            <p id="ngoStatus"></p>
+        </section>
 
-  <footer>
-    <p>&copy; 2026 Real-Time Food Waste Management</p>
-  </footer>
+        <section class="requests-list">
+            <h2>All Food Requests</h2>
+            <ul id="requestsList"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Food Waste Management</p>
+    </footer>
 </body>
 </html>

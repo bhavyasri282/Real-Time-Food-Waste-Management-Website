@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Contact Us</h1>
-  </header>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="donor.html">Donor</a>
+            <a href="ngo.html">NGO</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="contact-section">
-    <form id="contactForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-    <p style="text-align:center; color:green;" id="contactConfirm"></p>
+    <main>
+        <section class="contact-form">
+            <h2>Send a Message</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <p id="contactStatus"></p>
+        </section>
+    </main>
 
-    <div class="contact-info">
-      <p>Email: info@foodwaste.org</p>
-      <p>Phone: +91 123 456 7890</p>
-      <p>Follow us on social media: Facebook | Instagram | Twitter</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 Real-Time Food Waste Management</p>
-  </footer>
-
-  <script>
-    const contactForm = document.getElementById("contactForm");
-    const contactConfirm = document.getElementById("contactConfirm");
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      contactConfirm.textContent = "Thank you! Your message has been sent.";
-      contactForm.reset();
-    });
-  </script>
+    <footer>
+        <p>&copy; 2026 Food Waste Management</p>
+    </footer>
 </body>
 </html>
