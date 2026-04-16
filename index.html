@@ -1,49 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Waste Management</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-    <script src="script.js" defer></script>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #667eea;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-btn {
+      background: #34a853;
+    }
+
+    .signin-btn {
+      background: #4285f4;
+    }
+
+    .logout-btn {
+      background: #ea4335;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: gray;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Food Waste Management System</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="donor.html">Donor</a>
-            <a href="ngo.html">NGO</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h2>Stop Food Waste, Help Someone</h2>
-            <p>Donate or request food from local NGOs.</p>
-        </section>
+<div class="login-container">
+  <div class="title">🍽 FoodShare</div>
+  <div class="subtitle">Share Food, Share Hope</div>
 
-        <section class="features">
-            <div class="feature">
-                <h3>Donate Food</h3>
-                <p>Share surplus food with those in need.</p>
-            </div>
-            <div class="feature">
-                <h3>Request Food</h3>
-                <p>NGOs can request food donations.</p>
-            </div>
-            <div class="feature">
-                <h3>Track Donations</h3>
-                <p>See your donation history and impact.</p>
-            </div>
-        </section>
-    </main>
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="password" id="password" placeholder="Enter Password">
 
-    <footer>
-        <p>&copy; 2026 Food Waste Management</p>
-    </footer>
+  <button class="btn signup-btn" onclick="signUp()">Sign Up</button>
+  <button class="btn signin-btn" onclick="signIn()">Sign In</button>
+  <button class="btn logout-btn" onclick="signOut()">Sign Out</button>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script>
+auth.onAuthStateChanged(user => {
+  if (user) {
+    window.location.href = "home.html";
+  }
+});
+
+function signUp() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => alert("Account Created ✅"))
+    .catch(err => alert(err.message));
+}
+
+function signIn() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      alert("Login Success ✅");
+      window.location.href = "home.html";
+    })
+    .catch(err => alert(err.message));
+}
+
+function signOut() {
+  auth.signOut().then(() => alert("Logged out 👋"));
+}
+</script>
+
 </body>
 </html>

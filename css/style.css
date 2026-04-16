@@ -1,75 +1,170 @@
+/* RESET */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #fceabb, #f8b500, #ff7b00, #ff3d00);
-    color: #333;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
-header {
-    background: #ff3d00;
-    color: white;
-    padding: 1em;
-    text-align: center;
+/* ===================== */
+/* NAVBAR */
+/* ===================== */
+.navbar {
+  background: rgba(0,0,0,0.4);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
+.navbar h2, .navbar h3 {
+  margin: 0;
 }
 
+.navbar a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #ffd54f;
+}
+
+/* ===================== */
+/* HOME PAGE */
+/* ===================== */
+.home-page {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  min-height: 100vh;
+}
+
+/* HERO */
 .hero {
-    text-align: center;
-    padding: 3em 1em;
+  text-align: center;
+  padding: 80px 20px;
 }
 
+.hero h1 {
+  font-size: 42px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 10px;
+  background: #ff9800;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btn.secondary {
+  background: #2196f3;
+}
+
+/* FEATURES */
 .features {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 2em 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+  flex-wrap: wrap;
 }
 
-.feature {
-    background: rgba(255,255,255,0.8);
-    margin: 1em;
-    padding: 2em;
-    border-radius: 15px;
-    flex: 1 1 250px;
-    text-align: center;
+.feature-card {
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.2);
+  text-align: center;
 }
 
+/* ===================== */
+/* DONOR PAGE */
+/* ===================== */
+.donor-page {
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
+  min-height: 100vh;
+}
+
+/* ===================== */
+/* NGO PAGE */
+/* ===================== */
+.ngo-page {
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  min-height: 100vh;
+}
+
+/* ===================== */
+/* CONTACT PAGE */
+/* ===================== */
+.contact-page {
+  background: linear-gradient(135deg, #ff8008, #ffc837);
+  min-height: 100vh;
+}
+
+/* ===================== */
+/* FORM */
+/* ===================== */
 form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
+  width: 320px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
 }
 
-input, textarea, button {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
 }
 
+/* BUTTON */
 button {
-    background: #ff7b00;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 100%;
+  padding: 10px;
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 button:hover {
-    background: #ff3d00;
+  background: #e64a19;
 }
 
-footer {
-    text-align: center;
-    padding: 1em;
-    background: #ff3d00;
-    color: white;
+/* ===================== */
+/* CARDS */
+/* ===================== */
+.card {
+  margin: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.3);
+}
+
+/* ===================== */
+/* MAP IFRAME */
+/* ===================== */
+iframe {
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
 }

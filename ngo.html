@@ -1,45 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGO Page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-    <script src="ngo.js" defer></script>
+  <title>Receiver</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header>
-        <h1>NGO Page</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="donor.html">Donor</a>
-            <a href="ngo.html">NGO</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <section class="request-form">
-            <h2>Request Food</h2>
-            <form id="ngoForm">
-                <input type="text" id="ngoName" placeholder="NGO Name" required>
-                <input type="text" id="foodRequest" placeholder="Food Required" required>
-                <input type="number" id="quantityRequest" placeholder="Quantity" required>
-                <button type="submit">Request</button>
-            </form>
-            <p id="ngoStatus"></p>
-        </section>
+<body class="ngo-page">
 
-        <section class="requests-list">
-            <h2>All Food Requests</h2>
-            <ul id="requestsList"></ul>
-        </section>
-    </main>
+<nav class="navbar">
+  <h3>Food Waste System</h3>
+</nav>
 
-    <footer>
-        <p>&copy; 2026 Food Waste Management</p>
-    </footer>
+<h2 style="text-align:center;">Nearby Donations</h2>
+
+<div id="list"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="ngo.js"></script>
+
 </body>
 </html>

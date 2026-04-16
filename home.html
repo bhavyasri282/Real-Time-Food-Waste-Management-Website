@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="home-page">
+
+<nav class="navbar">
+  <h2>🍽 Food Waste System</h2>
+
+  <div>
+    <a href="home.html">Home</a>
+    <a href="#" onclick="goToDonor()">Donor</a>
+    <a href="#" onclick="goToNgo()">Receiver</a>
+    <a href="contact.html">Contact</a>
+
+    <!-- 🔥 SIGNOUT BUTTON -->
+    <button onclick="logout()" style="margin-left:15px;">Sign Out</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Stop Food Waste 🍛</h1>
+  <p>Donate extra food and help people in need</p>
+
+  <div class="buttons">
+    <!-- 🔥 PROTECTED BUTTONS -->
+    <a href="#" onclick="goToDonor()" class="btn">Donate Food</a>
+    <a href="#" onclick="goToNgo()" class="btn secondary">Find Food Near You</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>🥗 Donate Food</h3>
+    <p>Share surplus food easily with NGOs.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🏢 NGO Support</h3>
+    <p>NGOs can accept and distribute food.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>📍 Track Location</h3>
+    <p>Provide location for easy pickup.</p>
+  </div>
+</section>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script>
+// 🔥 CHECK LOGIN
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    alert("Please login first ❌");
+    window.location.href = "index.html";
+  }
+});
+
+// 🔥 NAVIGATION CONTROL
+function goToDonor() {
+  if (auth.currentUser) {
+    window.location.href = "donor.html";
+  } else {
+    alert("Please Sign In First 🔐");
+    window.location.href = "index.html";
+  }
+}
+
+function goToNgo() {
+  if (auth.currentUser) {
+    window.location.href = "ngo.html";
+  } else {
+    alert("Please Sign In First 🔐");
+    window.location.href = "index.html";
+  }
+}
+
+// 🔥 LOGOUT
+function logout() {
+  auth.signOut().then(() => {
+    alert("Logged out 👋");
+    window.location.href = "index.html";
+  });
+}
+</script>
+
+</body>
+</html>

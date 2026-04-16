@@ -1,43 +1,55 @@
-// Firebase config (same as script.js)
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_ID",
-    appId: "YOUR_APP_ID"
-};
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    window.location.href = "index.html";
+  }
+});
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Load donations
+function loadData() {
+  db.collection("donations").onSnapshot(snapshot => {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
 
-// NGO request form
-const ngoForm = document.getElementById("ngoForm");
-if(ngoForm){
-    ngoForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const ngoName = document.getElementById("ngoName").value;
-        const foodRequest = document.getElementById("foodRequest").value;
-        const quantityRequest = document.getElementById("quantityRequest").value;
+    snapshot.forEach(doc => {
+      const d = doc.data();
 
-        db.collection("ngoRequests").add({ ngoName, foodRequest, quantityRequest })
-        .then(() => {
-            document.getElementById("ngoStatus").innerText = "Request submitted!";
-            ngoForm.reset();
-        })
-        .catch(err => {
-            document.getElementById("ngoStatus").innerText = "Error! " + err;
-        });
+      // 🔥 Show only available donations
+      if (d.status !== "Available") return;
+
+      list.innerHTML += `
+        <div class="card">
+          <p><b>Name:</b> ${d.name}</p>
+          <p><b>Food:</b> ${d.food}</p>
+          <p><b>Quantity:</b> ${d.quantity}</p>
+
+          <!-- ✅ ADDRESS -->
+          <p><b>Address:</b> ${d.address || "Not provided"}</p>
+
+          <!-- ✅ MAP LINK -->
+          <a href="https://www.google.com/maps?q=${d.lat},${d.lon}" target="_blank">
+            View Location 📍
+          </a>
+
+          <br><br>
+
+          <!-- ✅ ACCEPT BUTTON -->
+          <button onclick="acceptDonation('${doc.id}')">Accept</button>
+        </div>
+      `;
     });
+  });
 }
 
-// Display all requests
-const requestsList = document.getElementById("requestsList");
-db.collection("ngoRequests").onSnapshot(snapshot => {
-    requestsList.innerHTML = "";
-    snapshot.forEach(doc => {
-        const li = document.createElement("li");
-        li.innerText = `${doc.data().ngoName} needs ${doc.data().quantityRequest} of ${doc.data().foodRequest}`;
-        requestsList.appendChild(li);
-    });
-});
+// Accept donation
+function acceptDonation(id) {
+  db.collection("donations").doc(id).update({
+    status: "Accepted"
+  })
+  .then(() => {
+    alert("Donation Accepted ✅");
+  })
+  .catch(err => alert(err.message));
+}
+
+// 🔥 Start loading data
+loadData();
