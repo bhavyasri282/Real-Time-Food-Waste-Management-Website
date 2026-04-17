@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Donor</title>
+  <title>Donate Food</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="donor-page">
 
+<!-- NAVBAR -->
 <nav class="navbar">
-  <h3>Food Waste System</h3>
+  <h3>🍽 FoodShare</h3>
+
+  <div>
+    <a href="home.html">Home</a>
+    <a href="donor.html">Donate</a>
+    <a href="ngo.html">Receiver</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
-<h2 style="text-align:center;">Donate Food</h2>
+<!-- HEADING -->
+<h2>Donate Extra Food</h2>
 
+<!-- FORM -->
 <form id="form">
-  <input id="name" placeholder="Name" required>
-  <input id="food" placeholder="Food Type" required>
-  <input id="quantity" placeholder="Quantity" required>
 
-  <!-- 🔥 NEW ADDRESS INPUT -->
-  <input id="address" placeholder="Enter Address (Optional)">
+  <input id="name" placeholder="Your Name" required>
 
-  <button type="button" onclick="getLocation()">Share Location 📍</button>
-  <p id="locText"></p>
+  <input id="food" placeholder="Food Type (Rice, Meals, Snacks...)" required>
 
-  <button type="submit">Submit</button>
+  <input id="quantity" placeholder="Quantity (5 Plates / 2 Boxes)" required>
+
+  <input id="address" placeholder="Pickup Address (Optional)">
+
+  <button type="button" onclick="getLocation()">Share Live Location 📍</button>
+
+  <p id="locText" style="text-align:center; margin-top:10px;"></p>
+
+  <button type="submit">Submit Donation ❤️</button>
+
 </form>
 
+<!-- INFO CARD -->
+<div class="card">
+  <p><b>Why Donate?</b></p>
+  <p>
+    Your extra food can feed hungry people nearby.  
+    Share meals, reduce waste, spread kindness.
+  </p>
+</div>
+
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

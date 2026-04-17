@@ -1,170 +1,284 @@
-/* RESET */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  color:white;
+}
+
+/* ===================== */
+/* ANIMATION */
+/* ===================== */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
 }
 
 /* ===================== */
 /* NAVBAR */
 /* ===================== */
-.navbar {
-  background: rgba(0,0,0,0.4);
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-.navbar h2, .navbar h3 {
-  margin: 0;
+.navbar h2,
+.navbar h3{
+  font-size:24px;
+  font-weight:700;
 }
 
-.navbar a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
-  font-weight: bold;
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-weight:500;
+  transition:0.3s;
 }
 
-.navbar a:hover {
-  color: #ffd54f;
+.navbar a:hover{
+  color:#ffd54f;
 }
 
 /* ===================== */
 /* HOME PAGE */
 /* ===================== */
-.home-page {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  min-height: 100vh;
+.home-page{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
 
 /* HERO */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
+.hero{
+  text-align:center;
+  padding:100px 20px;
+  animation:fadeUp 1s ease;
 }
 
-.hero h1 {
-  font-size: 42px;
+.hero h1{
+  font-size:58px;
+  margin-bottom:15px;
+  font-weight:700;
 }
 
-.hero p {
-  font-size: 18px;
-  margin-bottom: 20px;
+.hero p{
+  font-size:20px;
+  color:#ddd;
+  margin-bottom:30px;
+}
+
+.hero::after{
+  content:"🍽";
+  display:block;
+  font-size:70px;
+  margin-top:25px;
+  animation:float 3s infinite;
 }
 
 /* BUTTONS */
-.buttons {
-  margin-top: 20px;
+.buttons{
+  margin-top:20px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 10px;
-  background: #ff9800;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  margin:10px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  background:linear-gradient(45deg,#ff9800,#ff5722);
+  transition:0.3s;
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
 }
 
-.btn.secondary {
-  background: #2196f3;
+.btn:hover{
+  transform:translateY(-5px);
+}
+
+.btn.secondary{
+  background:linear-gradient(45deg,#00c6ff,#0072ff);
 }
 
 /* FEATURES */
-.features {
-  display: flex;
-  justify-content: space-around;
-  margin: 40px;
-  flex-wrap: wrap;
+.features{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+  padding:40px;
 }
 
-.feature-card {
-  width: 250px;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.2);
-  text-align: center;
+.feature-card{
+  width:280px;
+  padding:25px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  text-align:center;
+  transition:0.4s;
+  animation:fadeUp 1s ease;
+}
+
+.feature-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  background:rgba(255,255,255,0.15);
+}
+
+.feature-card h3{
+  margin-bottom:12px;
 }
 
 /* ===================== */
 /* DONOR PAGE */
 /* ===================== */
-.donor-page {
-  background: linear-gradient(135deg, #56ab2f, #a8e063);
-  min-height: 100vh;
+.donor-page{
+  min-height:100vh;
+  background:linear-gradient(135deg,#11998e,#38ef7d);
 }
 
 /* ===================== */
 /* NGO PAGE */
 /* ===================== */
-.ngo-page {
-  background: linear-gradient(135deg, #2193b0, #6dd5ed);
-  min-height: 100vh;
+.ngo-page{
+  min-height:100vh;
+  background:linear-gradient(135deg,#396afc,#2948ff);
 }
 
 /* ===================== */
 /* CONTACT PAGE */
 /* ===================== */
-.contact-page {
-  background: linear-gradient(135deg, #ff8008, #ffc837);
-  min-height: 100vh;
+.contact-page{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ff512f,#dd2476);
 }
 
 /* ===================== */
 /* FORM */
 /* ===================== */
-form {
-  width: 320px;
-  margin: 30px auto;
-  padding: 20px;
-  background: rgba(0,0,0,0.3);
-  border-radius: 12px;
+form{
+  width:380px;
+  max-width:90%;
+  margin:40px auto;
+  padding:30px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  animation:fadeUp 1s ease;
 }
 
 /* INPUTS */
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 6px;
+input{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  font-size:15px;
 }
 
 /* BUTTON */
-button {
-  width: 100%;
-  padding: 10px;
-  background: #ff5722;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff9800,#ff5722);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-button:hover {
-  background: #e64a19;
-}
-
-/* ===================== */
-/* CARDS */
-/* ===================== */
-.card {
-  margin: 20px;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.3);
+button:hover{
+  transform:translateY(-3px);
 }
 
 /* ===================== */
-/* MAP IFRAME */
+/* CARD */
 /* ===================== */
-iframe {
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
+.card{
+  width:380px;
+  max-width:90%;
+  margin:20px auto;
+  padding:22px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  animation:fadeUp 0.8s ease;
+}
+
+.card p{
+  margin:10px 0;
+}
+
+.card a{
+  color:#ffe082;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.card a:hover{
+  text-decoration:underline;
+}
+
+/* ===================== */
+/* HEADINGS */
+/* ===================== */
+h2{
+  text-align:center;
+  padding-top:30px;
+  font-size:36px;
+  animation:fadeUp 1s ease;
+}
+
+/* ===================== */
+/* MOBILE */
+/* ===================== */
+@media(max-width:768px){
+
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .features{
+    padding:20px;
+  }
 }

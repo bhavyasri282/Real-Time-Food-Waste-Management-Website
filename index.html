@@ -1,105 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>FoodShare Login</title>
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#667eea,#764ba2,#6a11cb);
+      overflow:hidden;
     }
 
-    .login-container {
-      background: white;
-      padding: 40px;
-      border-radius: 15px;
-      width: 320px;
-      text-align: center;
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    .bg-circle{
+      position:absolute;
+      border-radius:50%;
+      background:rgba(255,255,255,0.08);
+      animation:float 6s infinite ease-in-out;
     }
 
-    .login-container h2 {
-      margin-bottom: 20px;
-      color: #333;
+    .c1{
+      width:220px;
+      height:220px;
+      top:60px;
+      left:80px;
     }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      outline: none;
+    .c2{
+      width:180px;
+      height:180px;
+      bottom:80px;
+      right:90px;
+      animation-delay:2s;
     }
 
-    input:focus {
-      border-color: #667eea;
+    .login-box{
+      position:relative;
+      z-index:10;
+      width:360px;
+      max-width:90%;
+      padding:35px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.14);
+      backdrop-filter:blur(18px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.25);
+      text-align:center;
+      animation:fadeUp 1s ease;
     }
 
-    .btn {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
+    .logo{
+      font-size:42px;
+      margin-bottom:10px;
     }
 
-    .signup-btn {
-      background: #34a853;
+    .title{
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:6px;
     }
 
-    .signin-btn {
-      background: #4285f4;
+    .subtitle{
+      font-size:14px;
+      color:#f0f0f0;
+      margin-bottom:25px;
     }
 
-    .logout-btn {
-      background: #ea4335;
+    .login-box input{
+      width:100%;
+      padding:14px;
+      margin:10px 0;
+      border:none;
+      outline:none;
+      border-radius:12px;
+      font-size:15px;
     }
 
-    .btn:hover {
-      opacity: 0.9;
+    .main-btn{
+      width:100%;
+      padding:14px;
+      margin-top:12px;
+      border:none;
+      border-radius:30px;
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      font-size:15px;
     }
 
-    .title {
-      font-size: 24px;
-      margin-bottom: 10px;
+    .main-btn:hover{
+      transform:translateY(-3px);
     }
 
-    .subtitle {
-      font-size: 14px;
-      color: gray;
-      margin-bottom: 20px;
+    .signup{
+      background:linear-gradient(45deg,#34a853,#2ecc71);
+    }
+
+    .signin{
+      background:linear-gradient(45deg,#4285f4,#00c6ff);
+    }
+
+    .logout{
+      background:linear-gradient(45deg,#ea4335,#ff6b6b);
+    }
+
+    .footer-text{
+      margin-top:18px;
+      font-size:13px;
+      color:#f5f5f5;
     }
   </style>
 </head>
 
 <body>
 
-<div class="login-container">
-  <div class="title">🍽 FoodShare</div>
-  <div class="subtitle">Share Food, Share Hope</div>
+<div class="bg-circle c1"></div>
+<div class="bg-circle c2"></div>
+
+<div class="login-box">
+
+  <div class="logo">🍽</div>
+  <div class="title">FoodShare</div>
+  <div class="subtitle">Share Food • Spread Hope</div>
 
   <input type="email" id="email" placeholder="Enter Email">
   <input type="password" id="password" placeholder="Enter Password">
 
-  <button class="btn signup-btn" onclick="signUp()">Sign Up</button>
-  <button class="btn signin-btn" onclick="signIn()">Sign In</button>
-  <button class="btn logout-btn" onclick="signOut()">Sign Out</button>
+  <button class="main-btn signup" onclick="signUp()">Create Account</button>
+  <button class="main-btn signin" onclick="signIn()">Sign In</button>
+  <button class="main-btn logout" onclick="signOut()">Sign Out</button>
+
+  <div class="footer-text">
+    Help reduce waste & feed people ❤️
+  </div>
+
 </div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
 <script src="firebase.js"></script>
 
 <script>
@@ -114,7 +157,7 @@ function signUp() {
   const password = document.getElementById("password").value;
 
   auth.createUserWithEmailAndPassword(email, password)
-    .then(() => alert("Account Created ✅"))
+    .then(() => alert("Account Created Successfully ✅"))
     .catch(err => alert(err.message));
 }
 
@@ -124,7 +167,7 @@ function signIn() {
 
   auth.signInWithEmailAndPassword(email, password)
     .then(() => {
-      alert("Login Success ✅");
+      alert("Login Successful 🎉");
       window.location.href = "home.html";
     })
     .catch(err => alert(err.message));

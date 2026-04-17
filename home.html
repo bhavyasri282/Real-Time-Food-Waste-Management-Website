@@ -1,94 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home</title>
+  <title>FoodShare Home</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 
 <body class="home-page">
 
+<!-- NAVBAR -->
 <nav class="navbar">
-  <h2>🍽 Food Waste System</h2>
+  <h2>🍽 FoodShare</h2>
 
   <div>
     <a href="home.html">Home</a>
-    <a href="#" onclick="goToDonor()">Donor</a>
-    <a href="#" onclick="goToNgo()">Receiver</a>
+    <a href="#" onclick="goToDonor()">Donate</a>
+    <a href="#" onclick="goToNgo()">Receive</a>
     <a href="contact.html">Contact</a>
-
-    <!-- 🔥 SIGNOUT BUTTON -->
-    <button onclick="logout()" style="margin-left:15px;">Sign Out</button>
+    <a href="#" onclick="logout()">Logout</a>
   </div>
 </nav>
 
-<section class="hero">
-  <h1>Stop Food Waste 🍛</h1>
-  <p>Donate extra food and help people in need</p>
+<!-- HERO -->
+<section class="hero" data-aos="fade-up">
+  <h1>Reduce Food Waste, Feed Lives</h1>
+  <p>Connect food donors with people in need. One meal can change someone’s day.</p>
 
   <div class="buttons">
-    <!-- 🔥 PROTECTED BUTTONS -->
     <a href="#" onclick="goToDonor()" class="btn">Donate Food</a>
     <a href="#" onclick="goToNgo()" class="btn secondary">Find Food Near You</a>
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="features">
-  <div class="feature-card">
-    <h3>🥗 Donate Food</h3>
-    <p>Share surplus food easily with NGOs.</p>
+
+  <div class="feature-card" data-aos="fade-up" onclick="showInfo('donate')">
+    <h3>🥗 Easy Donations</h3>
+    <p>Donate extra food quickly with a few clicks and location sharing.</p>
   </div>
 
-  <div class="feature-card">
-    <h3>🏢 NGO Support</h3>
-    <p>NGOs can accept and distribute food.</p>
+  <div class="feature-card" data-aos="zoom-in" data-aos-delay="150" onclick="showInfo('community')">
+    <h3>🤝 Help Community</h3>
+    <p>Support NGOs, shelters, and people who need fresh meals.</p>
   </div>
 
-  <div class="feature-card">
-    <h3>📍 Track Location</h3>
-    <p>Provide location for easy pickup.</p>
+  <div class="feature-card" data-aos="flip-left" data-aos-delay="250" onclick="showInfo('realtime')">
+    <h3>⚡ Real Time Access</h3>
+    <p>Receivers can instantly view available donations nearby.</p>
   </div>
+
+  <div class="feature-card" data-aos="fade-left" data-aos-delay="350" onclick="showInfo('planet')">
+    <h3>🌍 Better Planet</h3>
+    <p>Reduce food waste and build a sustainable future.</p>
+  </div>
+
 </section>
+
+<!-- POPUP -->
+<div id="popup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:999;
+">
+
+  <div style="
+  background:white;
+  color:black;
+  width:520px;
+  max-width:92%;
+  padding:30px;
+  border-radius:18px;
+  margin:70px auto;
+  line-height:1.8;
+  ">
+
+    <h2 id="popupTitle" style="text-align:center;"></h2>
+
+    <p id="popupText"></p>
+
+    <button onclick="closePopup()">Close</button>
+
+  </div>
+
+</div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
 <script src="firebase.js"></script>
 
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
-// 🔥 CHECK LOGIN
+// Start animations
+AOS.init({
+  duration: 1200,
+  once: true
+});
+
+// Auth Check
 auth.onAuthStateChanged(user => {
   if (!user) {
-    alert("Please login first ❌");
     window.location.href = "index.html";
   }
 });
 
-// 🔥 NAVIGATION CONTROL
+// Navigation
 function goToDonor() {
-  if (auth.currentUser) {
-    window.location.href = "donor.html";
-  } else {
-    alert("Please Sign In First 🔐");
-    window.location.href = "index.html";
-  }
+  window.location.href = "donor.html";
 }
 
 function goToNgo() {
-  if (auth.currentUser) {
-    window.location.href = "ngo.html";
-  } else {
-    alert("Please Sign In First 🔐");
-    window.location.href = "index.html";
-  }
+  window.location.href = "ngo.html";
 }
 
-// 🔥 LOGOUT
+// Logout
 function logout() {
   auth.signOut().then(() => {
-    alert("Logged out 👋");
     window.location.href = "index.html";
   });
+}
+
+// Popup Info
+function showInfo(type) {
+
+  if(type === "donate"){
+    document.getElementById("popupTitle").innerText = "🥗 Easy Donations";
+    document.getElementById("popupText").innerText =
+    "FoodShare allows donors to share extra food easily. Users can enter food details, quantity, and location in just a few clicks. This helps restaurants, homes, and event organizers prevent waste while helping people in need.";
+  }
+
+  if(type === "community"){
+    document.getElementById("popupTitle").innerText = "🤝 Help Community";
+    document.getElementById("popupText").innerText =
+    "Every donation supports local communities by helping NGOs, shelters, orphanages, and families facing hunger. FoodShare creates a bridge between surplus food and hungry people.";
+  }
+
+  if(type === "realtime"){
+    document.getElementById("popupTitle").innerText = "⚡ Real Time Access";
+    document.getElementById("popupText").innerText =
+    "Receivers can instantly view donations as soon as donors submit them. This fast response system improves pickup speed and ensures fresh food reaches people quickly.";
+  }
+
+  if(type === "planet"){
+    document.getElementById("popupTitle").innerText = "🌍 Better Planet";
+    document.getElementById("popupText").innerText =
+    "Reducing food waste helps lower pollution and saves water, energy, and land resources. FoodShare promotes sustainability and a cleaner future.";
+  }
+
+  document.getElementById("popup").style.display = "block";
+}
+
+// Close Popup
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 </script>
 
