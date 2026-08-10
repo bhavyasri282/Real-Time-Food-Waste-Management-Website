@@ -1,51 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Receive Food</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Food - FoodShare</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="ngo-page">
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <h3>🍽 FoodShare</h3>
+  <nav class="navbar">
+    <h3>🍽 FoodShare</h3>
+    <div>
+      <a href="home.html">Home</a>
+      <a href="donor.html">Donate</a>
+      <a href="ngo.html">Receive</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <div>
-    <a href="home.html">Home</a>
-    <a href="donor.html">Donate</a>
-    <a href="ngo.html">Receive</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<!-- HEADING -->
-<h2>Available Food Donations</h2>
-
-<!-- SUBTEXT -->
-<p style="text-align:center; color:white; margin-top:10px; font-size:16px;">
-  Find nearby food donations and accept requests instantly.
-</p>
-
-<!-- LIST -->
-<div id="list"></div>
-
-<!-- INFO CARD -->
-<div class="card">
-  <p><b>How It Works?</b></p>
-  <p>
-    Browse available donations, view location, and accept food pickup requests.
-    Help reduce waste and support the community.
+  <h2>Available Food Donations</h2>
+  <p style="text-align:center; color:white; margin:10px auto; max-width: 600px;">
+    Browse nearby donations, call the donor directly, and accept requests instantly.
   </p>
-</div>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <div id="list"></div>
 
-<script src="firebase.js"></script>
-<script src="ngo.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script src="ngo.js"></script>
 </body>
 </html>

@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Donate Food</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Food - FoodShare</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="donor-page">
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <h3>🍽 FoodShare</h3>
+  <nav class="navbar">
+    <h3>🍽 FoodShare</h3>
+    <div>
+      <a href="home.html">Home</a>
+      <a href="donor.html">Donate</a>
+      <a href="ngo.html">Receive</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <div>
-    <a href="home.html">Home</a>
-    <a href="donor.html">Donate</a>
-    <a href="ngo.html">Receiver</a>
-    <a href="contact.html">Contact</a>
+  <h2>Donate Extra Food</h2>
+
+  <form id="form">
+    <input id="name" placeholder="Your Name or Organization" required>
+    <input type="tel" id="phone" placeholder="Contact Phone Number (e.g. +91 9876543210)" required>
+    <input id="food" placeholder="Food Type (e.g., Rice, 10 Boxed Meals)" required>
+    <input id="quantity" placeholder="Quantity (e.g., Feeds ~15 people)" required>
+    <input id="address" placeholder="Pickup Address / Landmark">
+
+    <button type="button" class="btn-loc" onclick="getLocation()">Share Live Location 📍</button>
+    <p id="locText" style="text-align:center; margin: 6px 0; font-size:14px; font-weight: 500;"></p>
+
+    <button type="submit">Submit Donation ❤️</button>
+  </form>
+
+  <div class="card">
+    <p><b>Why Donate?</b></p>
+    <p>Your surplus meals prevent waste and help feed families, shelters, and communities in need nearby.</p>
   </div>
-</nav>
 
-<!-- HEADING -->
-<h2>Donate Extra Food</h2>
-
-<!-- FORM -->
-<form id="form">
-
-  <input id="name" placeholder="Your Name" required>
-
-  <input id="food" placeholder="Food Type (Rice, Meals, Snacks...)" required>
-
-  <input id="quantity" placeholder="Quantity (5 Plates / 2 Boxes)" required>
-
-  <input id="address" placeholder="Pickup Address (Optional)">
-
-  <button type="button" onclick="getLocation()">Share Live Location 📍</button>
-
-  <p id="locText" style="text-align:center; margin-top:10px;"></p>
-
-  <button type="submit">Submit Donation ❤️</button>
-
-</form>
-
-<!-- INFO CARD -->
-<div class="card">
-  <p><b>Why Donate?</b></p>
-  <p>
-    Your extra food can feed hungry people nearby.  
-    Share meals, reduce waste, spread kindness.
-  </p>
-</div>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-<script src="firebase.js"></script>
-<script src="donor.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script src="donor.js"></script>
 </body>
 </html>

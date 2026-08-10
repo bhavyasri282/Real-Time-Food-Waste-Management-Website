@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Donations</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script src="firebase.js"></script>
+
+</head>
+
+
+<body class="my-donations-page">
+
+
+<nav class="navbar">
+
+    <div class="logo-text">
+        🍽️ FoodShare
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="donor.html">
+            Donate
+        </a>
+
+        <a href="mydonations.html">
+            My Donations
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="#"
+           onclick="logout()">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="page-header">
+
+    <h1>
+        My Donations 📦
+    </h1>
+
+    <p>
+        Track your donated food and see
+        who accepted it.
+    </p>
+
+</div>
+
+
+<div id="donationsList">
+
+</div>
+
+
+<script src="mydonations.js"></script>
+
+</body>
+
+</html>

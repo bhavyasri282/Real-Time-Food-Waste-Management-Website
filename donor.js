@@ -1,42 +1,56 @@
 auth.onAuthStateChanged(user => {
-  if (!user) {
-    window.location.href = "index.html";
-  }
+  if (!user) window.location.href = "index.html";
 });
 
-let lat = "", lon = "";
+let lat = null, lon = null;
 
 function getLocation() {
-  navigator.geolocation.getCurrentPosition((pos) => {
-    lat = pos.coords.latitude;
-    lon = pos.coords.longitude;
-    document.getElementById("locText").innerText = "Location captured ✅";
-  });
+  const locText = document.getElementById("locText");
+  if (!navigator.geolocation) {
+    locText.innerText = "Geolocation not supported by browser ❌";
+    return;
+  }
+  
+  locText.innerText = "Fetching position...";
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      lat = pos.coords.latitude;
+      lon = pos.coords.longitude;
+      locText.innerText = "Location Captured ✅";
+    },
+    (err) => {
+      locText.innerText = "Location denied/failed ❌";
+      alert("Could not get location: " + err.message);
+    }
+  );
 }
 
 document.getElementById("form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (!lat) {
-    alert("Please share location first 📍");
+  if (!lat || !lon) {
+    alert("Please click 'Share Live Location 📍' before submitting.");
     return;
   }
 
   db.collection("donations").add({
     name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
     food: document.getElementById("food").value,
     quantity: document.getElementById("quantity").value,
-    
-    // 🔥 NEW ADDRESS FIELD
-    address: document.getElementById("address").value,
-
-    lat,
-    lon,
-    status: "Available"
+    address: document.getElementById("address").value || "Not provided",
+    lat: lat,
+    lon: lon,
+    status: "Available",
+    donorUid: auth.currentUser.uid,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
   })
   .then(() => {
-    alert("Stored ✅");
+    alert("Donation Listed Successfully! 🎉");
     document.getElementById("form").reset();
+    document.getElementById("locText").innerText = "";
+    lat = null;
+    lon = null;
   })
-  .catch(err => alert(err.message));
+  .catch(err => alert("Error: " + err.message));
 });
